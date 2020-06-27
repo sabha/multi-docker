@@ -3,26 +3,26 @@ services:
  - docker
 
 before_install:
- - docker build -t sabhab/react-test -f ./client/Dockerfile.dev ./client
+ - docker build -t sabhab1/react-test -f ./client/Dockerfile.dev ./client
 
 script;
- - docker run -e CI=true  sabhab/react-test npm test -- --coverage
+ - docker run -e CI=true  sabhab1/react-test npm test -- --coverage
 
 after-sucess:
- - docker build -t sabhab/multi-client  ./client
- - docker build -t sabhab/multi-nginx ./nginx
- - docker build -t sabhab/multi-server ./server
- - docker build -t sabhab/multi-worker ./worker
+ - docker build -t sabhab1/multi-client  ./client
+ - docker build -t sabhab1/multi-nginx ./nginx
+ - docker build -t sabhab1/multi-server ./server
+ - docker build -t sabhab1/multi-worker ./worker
 
  # Login into the Docker CLI
 
  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
  # Take those image and push to Docker hub
- - docker push sabhab/multi-client
- - docker push sabhab/multi-nginx
- - docker push sabhab/multi-server
- - docker push sabhab/multi-worker 
+ - docker push sabhab1/multi-client
+ - docker push sabhab1/multi-nginx
+ - docker push sabhab1/multi-server
+ - docker push sabhab1/multi-worker 
 
 
 
