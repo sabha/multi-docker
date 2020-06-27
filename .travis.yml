@@ -6,7 +6,7 @@ services:
 before_install:
  - docker build -t sabhab1/react-test -f ./client/Dockerfile.dev ./client
 
-script;
+script:
  - docker run -e CI=true  sabhab1/react-test npm test -- --coverage
 
 after-sucess:
