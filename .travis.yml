@@ -25,7 +25,19 @@ after-sucess:
  - docker push sabhab1/multi-server
  - docker push sabhab1/multi-worker 
 
-
+deploy:
+  edge: true
+  provider: elasticbeanstalk
+  region: us-west-2
+  app: multi-docker
+  env: MultiDocker-env
+  bucket_name: "elasticbeanstalk-us-west-2-892612947718"
+  bucket_path: multi-docker
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
 
 
  
