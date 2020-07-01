@@ -53,8 +53,9 @@ app.get('/values/current', async (req, res) => {
 });
 
 app.post('/values', async (req, res) => {
+  try {
   const index = req.body.index;
-
+  console.log('index >>>>>>>>>> ', index)  
   if (parseInt(index) > 40) {
     return res.status(422).send('Index too high');
   }
@@ -64,6 +65,9 @@ app.post('/values', async (req, res) => {
   pgClient.query('INSERT INTO values(number) VALUES($1)', [index]);
 
   res.send({ working: true });
+} catch(e) {
+  console.log('error occured >>>>>>>>>>>>> e  : ' , e)
+}
 });
 
 app.listen(5000, (err) => {
